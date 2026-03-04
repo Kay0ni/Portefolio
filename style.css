@@ -1,0 +1,501 @@
+/* =========================================
+   PORTFOLIO - THEME UNDERTALE / DELTARUNE
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* --- 1. CONFIGURATION (Variables) --- */
+:root {
+    --ut-bg: #000000;       
+    --ut-text: #FFFFFF;     
+    --ut-soul: #FF0000;     
+    --ut-save: #FFFF00;     
+    --ut-mercy: #00FF00;    
+
+    /* Les coeurs du bouton Thème (Violet = Sombre, Jaune = Clair) */
+    --ut-heart-purple: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 9"><path fill="%23A855F7" d="M1,0 h2 v1 h-2 z M7,0 h2 v1 h-2 z M0,1 h4 v1 h-4 z M6,1 h4 v1 h-4 z M0,2 h10 v3 h-10 z M1,5 h8 v1 h-8 z M2,6 h6 v1 h-6 z M3,7 h4 v1 h-4 z M4,8 h2 v1 h-2 z"/></svg>');
+    --ut-heart-yellow: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 9"><path fill="%23FFFF00" d="M1,0 h2 v1 h-2 z M7,0 h2 v1 h-2 z M0,1 h4 v1 h-4 z M6,1 h4 v1 h-4 z M0,2 h10 v3 h-10 z M1,5 h8 v1 h-8 z M2,6 h6 v1 h-6 z M3,7 h4 v1 h-4 z M4,8 h2 v1 h-2 z"/></svg>');
+    
+    /* La VRAIE étoile de sauvegarde (losange pixel parfait 9x9) */
+    --ut-star: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><path fill="%23FFFF00" d="M4 0h1v1H4z M3 1h3v1H3z M2 2h5v1H2z M1 3h7v1H1z M0 4h9v1H0z M1 5h7v1H1z M2 6h5v1H2z M3 7h3v1H3z M4 8h1v1H4z"/></svg>');
+    
+    /* LA POLICE DE TEXTE : Courier New (style machine à écrire / code) */
+    --ut-font: 'Courier New', Courier, monospace; 
+    
+    /* POLICE DE TITRE : Le vrai pixel art Undertale */
+    --ut-font-title: 'Press Start 2P', monospace;
+    
+    /* Ton coeur pixelisé */
+    --ut-heart: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 9"><path fill="%23FF0000" d="M1,0 h2 v1 h-2 z M7,0 h2 v1 h-2 z M0,1 h4 v1 h-4 z M6,1 h4 v1 h-4 z M0,2 h10 v3 h-10 z M1,5 h8 v1 h-8 z M2,6 h6 v1 h-6 z M3,7 h4 v1 h-4 z M4,8 h2 v1 h-2 z"/></svg>');
+}
+
+/* --- 2. RESET ET BASE --- */
+body {
+    background-color: var(--ut-bg);
+    color: var(--ut-text);
+    font-family: var(--ut-font); 
+    font-size: 22px; 
+    font-weight: bold; 
+    line-height: 1.6; 
+    margin: 0;
+}
+
+/* On utilise la police classique 8-bit juste pour les titres */
+h1, h2, h3 {
+    font-family: var(--ut-font-title);
+    color: var(--ut-text);
+    font-size: 20px; 
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+/* --- LIENS CLASSIQUES --- */
+a {
+    color: var(--ut-text);
+    text-decoration: underline;
+    text-decoration-style: dashed; 
+}
+
+a:hover {
+    color: var(--ut-soul); 
+}
+
+/* --- 3. BARRE DE NAVIGATION (Le Menu) --- */
+nav {
+    background-color: var(--ut-bg); 
+    border-bottom: 4px solid var(--ut-text); 
+    padding: 20px;
+    display: flex;
+    justify-content: center; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box; 
+    z-index: 1000; 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 40px; 
+}
+
+nav a {
+    color: var(--ut-text); 
+    text-decoration: none; 
+    font-family: var(--ut-font-title); 
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: color 0.2s step-end;
+}
+
+nav a:hover {
+    color: var(--ut-soul); 
+}
+
+/* Le cœur pixelisé dans le menu */
+nav a:hover::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    background-image: var(--ut-heart);
+    background-size: cover;
+    margin-right: 10px; 
+    vertical-align: -2px; 
+    image-rendering: pixelated; 
+}
+
+/* --- 4. MISE EN PAGE GLOBALE (Pour aérer) --- */
+main {
+    max-width: 900px; 
+    margin: 0 auto; 
+    margin-top: 120px; 
+    padding: 0px 20px 60px 20px; 
+}
+
+section {
+    /* Augmente cette valeur pour espacer les catégories ! */
+    margin-bottom: 200px; 
+}
+
+/* --- 5. BOÎTES DE COMBAT (Veille, Contact, Accueil) --- */
+.project-card {
+    background-color: var(--ut-bg);   
+    border: 5px solid var(--ut-text); 
+    padding: 40px;  
+    margin-bottom: 60px; 
+    position: relative; 
+    font-family: var(--ut-font);
+    line-height: 2; 
+    border-radius: 0px;
+}
+
+/* Le Cœur Rouge Pixelisé (l'Âme) qui flotte dans la boîte */
+.project-card::after {
+    content: ""; 
+    position: absolute;
+    bottom: 25px;
+    right: 30px;
+    width: 24px;   
+    height: 21px;  
+    background-image: var(--ut-heart);
+    background-size: cover;
+    image-rendering: pixelated; 
+    animation: floatSoul 2s ease-in-out infinite;
+}
+
+@keyframes floatSoul {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.project-card h3 {
+    color: var(--ut-save); 
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px; 
+    border-bottom: 2px dashed var(--ut-text); 
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+/* --- 6. PROJETS (Style Fichiers de Sauvegarde) --- */
+.save-file-card {
+    background-color: var(--ut-bg);   
+    border: 5px solid var(--ut-text); 
+    padding: 30px 40px;  
+    margin-bottom: 50px; 
+    font-family: var(--ut-font); /* Courier New pour la description */
+    border-radius: 0px;
+    max-width: 650px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* L'en-tête de la sauvegarde (Nom   LV   Temps) */
+.save-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--ut-font-title); 
+    font-size: 1.1rem;
+    color: var(--ut-text);
+    margin-bottom: 15px;
+}
+
+.save-location {
+    font-family: var(--ut-font-title);
+    font-size: 0.9rem;
+    color: var(--ut-text);
+    margin-bottom: 25px;
+}
+
+.save-desc {
+    color: #cccccc; 
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Les boutons en bas (Style LOAD / RETURN) */
+.save-actions {
+    display: flex;
+    justify-content: space-around; 
+}
+
+.save-actions .btn {
+    margin: 0;
+    padding: 10px 30px;
+}
+
+/* --- 7. BOUTONS (Style FIGHT / ACT / ITEM / MERCY) --- */
+button, .btn {
+    display: inline-block; 
+    text-decoration: none; 
+    background-color: var(--ut-bg);
+    color: var(--ut-save); 
+    border: 4px solid var(--ut-save); 
+    font-family: var(--ut-font-title); 
+    font-size: 1rem;
+    padding: 15px 30px;
+    margin: 10px 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.1s step-start;
+}
+
+button:hover, .btn:hover {
+    color: var(--ut-text);
+    border-color: var(--ut-text);
+}
+
+/* --- 8. COMPÉTENCES (Style Barres HP Undertale) --- */
+.skill-item {
+    margin-bottom: 35px; 
+    font-family: var(--ut-font-title); 
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--ut-text);
+}
+
+.skill-lv-text {
+    color: var(--ut-save);
+}
+
+.hp-bar-container {
+    width: 100%;
+    height: 35px; 
+    background-color: #222222; 
+    border: 4px solid var(--ut-text); 
+    padding: 3px; 
+}
+
+.hp-bar-fill {
+    height: 100%; 
+    background-color: var(--ut-save); 
+    transition: width 0.8s steps(8, end); 
+}
+
+.hp-stats-text {
+    text-align: right;
+    font-size: 0.8rem;
+    margin-top: 8px;
+    color: #888888; 
+}
+
+/* --- 9. APERÇU PDF (ÉPREUVE E5) --- */
+.pdf-preview-container {
+    position: relative;
+    width: 100%;
+    /* On agrandit un peu la hauteur pour avoir un bel aperçu du haut du document */
+    height: 350px; 
+    border: 3px dashed var(--ut-text); 
+    margin-bottom: 25px;
+    overflow: hidden;
+    background-color: #111; 
+}
+
+.pdf-iframe {
+    width: 100%;
+    /* Maintenant que la barre a disparu, on peut mettre la hauteur à 100% pile ! */
+    height: 100%; 
+    border: none;
+    opacity: 0.8; 
+    pointer-events: none; 
+}
+
+.pdf-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); 
+    pointer-events: none; 
+}
+
+/* --- 10. PARCOURS (Timeline des Sauvegardes) --- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 50px; 
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 8px; 
+    bottom: 0;
+    left: 21px; 
+    width: 4px; 
+    background-image: linear-gradient(to bottom, var(--ut-save) 40%, transparent 40%);
+    background-size: 4px 14px; 
+    z-index: 0; 
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+/* L'ÉTOILE PIXELISÉE EN SVG (Corrigée) */
+.timeline-star {
+    position: absolute;
+    left: -42px; /* Centrage sur la ligne */
+    top: -4px;   
+    
+    width: 27px;  /* 9x3 = 27 (Garde les pixels parfaitement carrés) */
+    height: 27px;
+    
+    background-image: var(--ut-star);
+    background-repeat: no-repeat;
+    background-size: contain; 
+    background-position: center;
+    
+    /* Le secret pour des pixels ultra nets : */
+    image-rendering: pixelated; 
+    
+    filter: drop-shadow(0 0 8px rgba(255, 255, 0, 0.8));
+    z-index: 1; 
+    animation: pulseStarSVG 1.5s ease-in-out infinite; 
+}
+
+@keyframes pulseStarSVG {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(255, 255, 0, 0.6)); }
+    50% { transform: scale(1.15); filter: drop-shadow(0 0 10px rgba(255, 255, 0, 1)); }
+}
+
+/* --- L'EASTER EGG DU COEUR SUR LE PARCOURS UNDERTALE --- */
+.timeline-title {
+    font-family: var(--ut-font-title);
+    color: var(--ut-text);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    transition: color 0.1s step-end;
+}
+
+.timeline-title::before {
+    content: "";
+    display: none; 
+    width: 20px;
+    height: 18px;
+    background-image: var(--ut-heart);
+    background-size: cover;
+    margin-right: 15px;
+    image-rendering: pixelated; 
+}
+
+.timeline-item:hover .timeline-title {
+    color: var(--ut-save); 
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.5); 
+}
+
+.timeline-item:hover .timeline-title::before {
+    display: inline-block; 
+}
+
+.timeline-date {
+    font-family: var(--ut-font-title);
+    color: var(--ut-save);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.timeline-desc {
+    font-family: var(--ut-font);
+    color: #cccccc;
+    line-height: 1.6;
+    border-left: 3px solid #333;
+    padding-left: 15px;
+}
+
+.timeline-desc p {
+    margin-top: 0; margin-bottom: 5px;
+}
+
+/* --- 11. FILTRES DE PROJETS --- */
+.filtres-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-filtre {
+    background-color: var(--ut-bg);
+    color: var(--ut-text);
+    border: 2px solid var(--ut-text);
+    font-family: var(--ut-font-title); /* Police 8-bits */
+    font-size: 0.8rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.1s step-end;
+}
+
+.btn-filtre:hover {
+    color: var(--ut-save); /* Jaune au survol */
+    border-color: var(--ut-save);
+}
+
+/* Le style quand le filtre est activé (Couleur de l'Âme / Rouge) */
+.btn-filtre.actif {
+    color: var(--ut-soul);
+    border-color: var(--ut-soul);
+}
+
+/* Le petit coeur apparaît devant le filtre actif */
+.btn-filtre.actif::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 10px;
+    background-image: var(--ut-heart);
+    background-size: cover;
+    margin-right: 8px;
+    image-rendering: pixelated;
+}
+
+/* =========================================
+   12. THEME CLAIR (LA SURFACE)
+   ========================================= */
+
+/* Quand le body a la classe 'light-theme', on écrase les variables de base */
+body.light-theme {
+    --ut-bg: #FFFFFF;       /* Fond Blanc */
+    --ut-text: #000000;     /* Texte Noir */
+    --ut-soul: #FF0000;     /* L'âme reste rouge */
+    --ut-save: #FF8C00;     /* Jaune/Orange plus foncé pour lire sur le blanc */
+    --ut-mercy: #00AA00;    /* Vert plus foncé */
+}
+
+/* On inverse aussi les couleurs de la zone de l'aperçu PDF pour qu'elle reste propre */
+body.light-theme .pdf-preview-container {
+    background-color: #f0f0f0;
+}
+
+/* Le bouton coeur (Thème sombre par défaut = Coeur Violet) */
+.btn-theme {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 18px;
+    background-image: var(--ut-heart-purple);
+    background-size: cover;
+    image-rendering: pixelated; /* Pixels parfaits ! */
+    transition: transform 0.2s ease-in-out;
+    padding: 0;
+    margin-top: 2px;
+}
+
+/* Le bouton coeur en Thème clair (Coeur Jaune) */
+body.light-theme .btn-theme {
+    background-image: var(--ut-heart-yellow);
+}
+
+/* Effet de battement quand on passe la souris dessus */
+.btn-theme:hover {
+    transform: scale(1.3);
+    background-color: transparent; /* Annule l'ancien fond blanc du survol */
+}
