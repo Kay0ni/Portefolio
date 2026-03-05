@@ -45,6 +45,7 @@ const mesProjets = [
         description: "Application mobile avec .NET.",
         technos: ["C#"],
         lien: "https://github.com/Kay0ni/CoachApp",
+        lienReadme: "https://github.com/Kay0ni/CoachApp/blob/master/README.md",
         texteLien: "FIGHT (Voir le code)",
         dateCreation: "23/01/2026"
     },
@@ -61,6 +62,7 @@ const mesProjets = [
         description: "Jeux de calcul mental en JavaScript/HTML.",
         technos: ["JavaScript", "HTML"],
         lien: "https://github.com/Kay0ni/CoachApp",
+        lienSite: "https://kay0ni.github.io/CalculeMentalTP/",
         texteLien: "FIGHT (Voir le code)",
         dateCreation: "16/10/2025"
     },
@@ -109,8 +111,7 @@ function afficherProjets(filtre = "TOUS") {
 
     // On utilise la liste filtrée au lieu de la liste complète
     projetsFiltres.forEach(projet => {
-        // ... (GARDE TOUT TON CODE PRÉCÉDENT ICI : equipement, HTML, icones, etc.) ...
-        
+        // On génère l'équipement (les icônes des technos)
         const equipement = projet.technos.map(tech => {
             const classeIcone = iconesTech[tech] || ""; 
             const baliseIcone = classeIcone ? `<i class="${classeIcone}"></i>` : "";
@@ -119,6 +120,18 @@ function afficherProjets(filtre = "TOUS") {
         
         const niveauFictif = "LV 20"; 
         const tempsFictif = "99:59";
+
+        // NOUVEAU : On vérifie s'il y a un site internet
+        // S'il y en a un, on crée le bouton PLAY. Sinon, on laisse vide ("").
+        // Le bouton pour le Site (s'il existe)
+        const boutonSite = projet.lienSite 
+            ? `<a href="${projet.lienSite}" class="btn">PLAY (Site)</a>` 
+            : "";
+
+        // On ajoute la classe "no-encounter" ici :
+        const boutonDetails = projet.lienReadme 
+            ? `<a href="projet.html?titre=${encodeURIComponent(projet.titre)}&readme=${encodeURIComponent(projet.lienReadme)}" class="btn no-encounter">CHECK (Détails)</a>` 
+            : "";
 
         const carteHTML = `
         <div class="save-file-card">
@@ -129,8 +142,11 @@ function afficherProjets(filtre = "TOUS") {
             </div>
             <div class="save-location">ZONE : ${equipement}</div>
             <div class="save-desc">* ${projet.description}</div>
+            
             <div class="save-actions">
-                <a href="${projet.lien}" target="_blank" class="btn">LOAD (Voir)</a>
+                <a href="${projet.lien}" class="btn">LOAD (Code)</a>
+                ${boutonSite}
+                ${boutonDetails}
             </div>
         </div>`;
 
@@ -306,5 +322,36 @@ themeToggleBtn.addEventListener('click', () => {
         localStorage.setItem('theme', 'light');
     } else {
         localStorage.setItem('theme', 'dark');
+    }
+});
+
+/* =========================================
+   EFFET D'ENCOUNTER (TRANSITION UNDERTALE)
+   ========================================= */
+
+document.addEventListener('click', function(e) {
+    // 1. On vérifie si on a cliqué sur un bouton (qui a la classe .btn)
+    const btn = e.target.closest('a.btn');
+    
+    if (btn) {
+        const href = btn.getAttribute('href');
+        
+        // 2. On vérifie que c'est un vrai lien externe (et pas une ancre comme #projets ou un email)
+        // 2. On vérifie que c'est un vrai lien externe ET qu'il n'a pas la classe "no-encounter"
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !btn.classList.contains('no-encounter')) {
+            
+            // ON BLOQUE LE CHANGEMENT DE PAGE IMMÉDIAT
+            e.preventDefault(); 
+            
+            // 3. On fait apparaître l'écran de flash (Encounter !)
+            const overlay = document.getElementById('encounter-overlay');
+            overlay.classList.add('active');
+            
+            // 4. On attend exactement 1.2 secondes (le temps de l'animation)
+            // Puis on téléporte l'utilisateur vers le projet
+            setTimeout(() => {
+                window.location.href = href; 
+            }, 1200);
+        }
     }
 });

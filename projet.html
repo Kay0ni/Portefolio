@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Projet | Tim Crebessegues</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <nav id="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">RETURN (Retourner au Hub)</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="section" style="margin-top: 50px;">
+            <h2 id="projet-titre">* Chargement des données...</h2>
+            
+            <div class="project-card">
+                <div id="readme-content" class="markdown-body">
+                    * Connexion au serveur GitHub en cours...
+                </div>
+                
+                <br><br>
+                <a href="index.html" class="btn">RETURN (Retour)</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 1. On récupère le titre et le lien du README dans l'URL de la page
+        const urlParams = new URLSearchParams(window.location.search);
+        const titre = urlParams.get('titre');
+        const readmeUrl = urlParams.get('readme');
+
+        // 2. On affiche le titre
+        if (titre) {
+            document.getElementById('projet-titre').innerText = "* Fichier : " + titre;
+        }
+
+        // 3. On va chercher le fichier sur GitHub
+        if (readmeUrl) {
+            fetch(readmeUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error("Fichier introuvable");
+                    return response.text();
+                })
+                .then(text => {
+                    // On transforme le texte Markdown en vrai HTML !
+                    document.getElementById('readme-content').innerHTML = marked.parse(text);
+                })
+                .catch(error => {
+                    document.getElementById('readme-content').innerHTML = "* L'archive est corrompue ou introuvable. (Erreur 404)";
+                });
+        } else {
+            document.getElementById('readme-content').innerHTML = "* Aucun fichier de sauvegarde trouvé.";
+        }
+    </script>
+</body>
+</html>
