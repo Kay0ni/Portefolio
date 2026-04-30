@@ -45,7 +45,7 @@ const mesProjets = [
         description: "Application mobile avec .NET.",
         technos: ["C#"],
         lien: "https://github.com/Kay0ni/CoachApp",
-        lienReadme: "https://github.com/Kay0ni/CoachApp/blob/master/README.md",
+        lienReadme: "https://github.com/Kay0ni/CoachApp/blob/master/README.md", /* Utiliser Parsedown */
         texteLien: "FIGHT (Voir le code)",
         dateCreation: "23/01/2026"
     },
@@ -75,13 +75,29 @@ const mesProjets = [
         dateCreation: "16/10/2025"
     },
     {
+        titre: "Site ZENHARMONIE",
+        description: "Site professionel",
+        technos: ["HTML", "CSS", "JavaScript"],
+        lienSite: "https://zenharmonienath.github.io/ZENHARMONIENATH/",
+        texteLien: "ACT (Voir le projet)",
+        dateCreation: "26/06/2020"
+    },
+    {
         titre: "The Hate Monsters",
         description: "Jeux slasher en Luau ROBLOX [EN COURS].",
         technos: ["Luau", "Roblox Engine"],
         lien: "https://www.roblox.com/games/8958458398/The-Hate-Monsters",
         texteLien: "ACT (Voir le projet)",
         dateCreation: "23/11/2019"
-    }
+    },
+    {
+        titre: "AreaWars",
+        description: "Jeux de combat en Luau ROBLOX [EN PAUSE].",
+        technos: ["Luau", "Roblox Engine"],
+        lien: "https://www.roblox.com/games/16561098879/AreaWars-V3",
+        texteLien: "ACT (Voir le projet)",
+        dateCreation: "26/06/2020"
+    },
 ];
 
 /* =========================================
