@@ -544,18 +544,14 @@ body.light-theme .btn-theme {
     transform: scale(1.2) rotate(5deg);
 }
 
-/* =========================================
-   13. EFFET ENCOUNTER (TRANSITION COMBAT)
-   ========================================= */
-
 #encounter-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 99999; /* Toujours au-dessus de tout le reste */
-    pointer-events: none; /* Laisse passer les clics quand il est caché */
+    z-index: 99999;
+    pointer-events: none;
     background-color: transparent;
 }
 

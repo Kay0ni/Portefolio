@@ -43,7 +43,7 @@
 
         // 3. On va chercher le fichier sur GitHub
         if (readmeUrl) {
-            fetch(readmeUrl)
+            fetch(readmeUrl, { mode : 'cors' })
                 .then(response => {
                     if (!response.ok) throw new Error("Fichier introuvable");
                     return response.text();

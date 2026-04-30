@@ -45,7 +45,7 @@ const mesProjets = [
         description: "Application mobile avec .NET.",
         technos: ["C#"],
         lien: "https://github.com/Kay0ni/CoachApp",
-        lienReadme: "https://github.com/Kay0ni/CoachApp/blob/master/README.md", /* Utiliser Parsedown */
+        lienReadme: "https://raw.githubusercontent.com/Kay0ni/CoachApp/master/README.md", /* Utiliser Parsedown */
         texteLien: "FIGHT (Voir le code)",
         dateCreation: "23/01/2026"
     },
