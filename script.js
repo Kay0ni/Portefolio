@@ -1,4 +1,3 @@
-// 1. Initialisation du Smooth Scroll "Tween" avec Lenis
 const lenis = new Lenis({
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -17,7 +16,6 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// Pour que les liens d'ancrage fonctionnent avec Lenis
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -25,7 +23,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 2. Gestion de la barre de navigation au scroll
 const navbar = document.getElementById('navbar');
 lenis.on('scroll', (e) => {
     if (e.animatedScroll > 50) {
@@ -35,17 +32,13 @@ lenis.on('scroll', (e) => {
     }
 });
 
-/* =========================================
-   GESTION DES PROJETS (BOÎTES DE COMBAT)
-   ========================================= */
-
 const mesProjets = [
     {
         titre: "Application Coach",
         description: "Application mobile avec .NET.",
         technos: ["C#"],
         lien: "https://github.com/Kay0ni/CoachApp",
-        lienReadme: "https://raw.githubusercontent.com/Kay0ni/CoachApp/master/README.md", /* Utiliser Parsedown */
+        lienReadme: "https://raw.githubusercontent.com/Kay0ni/CoachApp/master/README.md",
         texteLien: "FIGHT (Voir le code)",
         dateCreation: "23/01/2026"
     },
@@ -100,9 +93,6 @@ const mesProjets = [
     },
 ];
 
-/* =========================================
-   DICTIONNAIRE DES ICÔNES DES LANGAGES
-   ========================================= */
 const iconesTech = {
     "C#": "devicon-csharp-plain",
     "JavaScript": "devicon-javascript-plain",
@@ -173,34 +163,26 @@ function afficherProjets(filtre = "TOUS") {
 function initialiserFiltres() {
     const filtresContainer = document.getElementById('filtres-container');
     
-    // 1. On fouille dans tous tes projets pour lister toutes les technos (sans doublons)
     let toutesTechnos = new Set();
     mesProjets.forEach(projet => {
         projet.technos.forEach(tech => toutesTechnos.add(tech));
     });
     
-    // 2. On crée la liste finale des filtres en ajoutant "TOUS" au début
     const listeFiltres = ["TOUS", ...Array.from(toutesTechnos)];
 
     filtresContainer.innerHTML = '';
 
-    // 3. On crée un bouton pour chaque techno
     listeFiltres.forEach(tech => {
         const btn = document.createElement('button');
         btn.className = 'btn-filtre';
         
-        // Le bouton "TOUS" est activé par défaut au chargement
         if (tech === "TOUS") btn.classList.add('actif'); 
         
         btn.innerText = tech;
         
-        // Quand on clique sur le bouton...
         btn.addEventListener('click', () => {
-            // On enlève le statut "actif" (le rouge) de tous les boutons
             document.querySelectorAll('.btn-filtre').forEach(b => b.classList.remove('actif'));
-            // On le met uniquement sur le bouton cliqué
             btn.classList.add('actif');
-            // On relance l'affichage des projets avec ce nouveau filtre !
             afficherProjets(tech);
         });
         
@@ -208,12 +190,8 @@ function initialiserFiltres() {
     });
 }
 
-initialiserFiltres(); // Crée les boutons d'abord
-afficherProjets();    // Affiche tous les projets ensuite
-
-/* =========================================
-   GESTION DES COMPÉTENCES (BARRES HP)
-   ========================================= */
+initialiserFiltres();
+afficherProjets();
 
 const mesCompetences = [
     { nom: "Luau / Lua", niveau: 95 },
@@ -232,7 +210,6 @@ function afficherCompetences() {
     mesCompetences.forEach(comp => {
         const niveauCalcule = Math.floor(comp.niveau / 5);
 
-        // On cherche l'icône correspondante à la compétence
         const classeIcone = iconesTech[comp.nom] || "";
         const baliseIcone = classeIcone ? `<i class="${classeIcone}"></i>` : "";
 
@@ -251,12 +228,9 @@ function afficherCompetences() {
         container.innerHTML += skillHTML;
     });
 
-    // L'animation qui remplit les barres de vie au chargement
     setTimeout(() => {
-        // On récupère toutes nos nouvelles barres de vie
         const progressBars = document.querySelectorAll('.hp-bar-fill');
         progressBars.forEach(bar => {
-            // On leur applique la largeur sauvegardée
             bar.style.width = bar.getAttribute('data-width');
         });
     }, 300);
@@ -264,9 +238,6 @@ function afficherCompetences() {
 
 afficherCompetences();
 
-/* =========================================
-   GESTION DU PARCOURS (TIMELINE)
-   ========================================= */
 const monParcours = [
     {
         periode: "2024 - 2026",
@@ -276,7 +247,7 @@ const monParcours = [
     },
     {
         periode: "Nov - Déc 2025",
-        titre: "Stage : Réalisation site Web",
+        titre: "Stage : Realisation site Web",
         lieu: "Milieu professionnel",
         description: "Mission de deuxième année accomplie. Gain d'expérience en développement web réel."
     },
@@ -288,7 +259,7 @@ const monParcours = [
     },
     {
         periode: "2021 - 2024",
-        titre: "Bac Pro SN (Systèmes Numériques)",
+        titre: "Bac Pro SN (Systemes Numeriques)",
         lieu: "Lycée d'origine",
         description: "Le début de l'aventure. Les bases de l'informatique et de l'architecture réseau ont été acquises ici."
     }
@@ -314,23 +285,17 @@ function afficherParcours() {
     });
 }
 
-// On lance la fonction au chargement
 afficherParcours();
 
-/* =========================================
-   GESTION DU THEME (MODE CLAIR / SOMBRE)
-   ========================================= */
+
 
 const themeToggleBtn = document.getElementById('theme-toggle');
 const body = document.body;
-
-// 1. Au chargement, on vérifie la sauvegarde
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'light') {
     body.classList.add('light-theme');
 }
 
-// 2. Quand on clique sur le bouton (le CSS s'occupera de changer la couleur du coeur !)
 themeToggleBtn.addEventListener('click', () => {
     body.classList.toggle('light-theme');
     
@@ -341,30 +306,19 @@ themeToggleBtn.addEventListener('click', () => {
     }
 });
 
-/* =========================================
-   EFFET D'ENCOUNTER (TRANSITION UNDERTALE)
-   ========================================= */
-
 document.addEventListener('click', function(e) {
-    // 1. On vérifie si on a cliqué sur un bouton (qui a la classe .btn)
     const btn = e.target.closest('a.btn');
     
     if (btn) {
         const href = btn.getAttribute('href');
         
-        // 2. On vérifie que c'est un vrai lien externe (et pas une ancre comme #projets ou un email)
-        // 2. On vérifie que c'est un vrai lien externe ET qu'il n'a pas la classe "no-encounter"
         if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !btn.classList.contains('no-encounter')) {
             
-            // ON BLOQUE LE CHANGEMENT DE PAGE IMMÉDIAT
             e.preventDefault(); 
             
-            // 3. On fait apparaître l'écran de flash (Encounter !)
             const overlay = document.getElementById('encounter-overlay');
             overlay.classList.add('active');
-            
-            // 4. On attend exactement 1.2 secondes (le temps de l'animation)
-            // Puis on téléporte l'utilisateur vers le projet
+
             setTimeout(() => {
                 window.location.href = href; 
             }, 1200);

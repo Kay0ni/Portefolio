@@ -18,12 +18,10 @@
     <main>
         <section class="section" style="margin-top: 50px;">
             <h2 id="projet-titre">* Chargement des données...</h2>
-            
             <div class="project-card">
                 <div id="readme-content" class="markdown-body">
                     * Connexion au serveur GitHub en cours...
                 </div>
-                
                 <br><br>
                 <a href="index.html" class="btn">RETURN (Retour)</a>
             </div>
@@ -31,17 +29,14 @@
     </main>
 
     <script>
-        // 1. On récupère le titre et le lien du README dans l'URL de la page
         const urlParams = new URLSearchParams(window.location.search);
         const titre = urlParams.get('titre');
         const readmeUrl = urlParams.get('readme');
 
-        // 2. On affiche le titre
         if (titre) {
             document.getElementById('projet-titre').innerText = "* Fichier : " + titre;
         }
 
-        // 3. On va chercher le fichier sur GitHub
         if (readmeUrl) {
             fetch(readmeUrl, { mode : 'cors' })
                 .then(response => {
@@ -49,7 +44,6 @@
                     return response.text();
                 })
                 .then(text => {
-                    // On transforme le texte Markdown en vrai HTML !
                     document.getElementById('readme-content').innerHTML = marked.parse(text);
                 })
                 .catch(error => {

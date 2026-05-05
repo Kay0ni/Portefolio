@@ -1,10 +1,5 @@
-/* =========================================
-   PORTFOLIO - THEME UNDERTALE / DELTARUNE
-   ========================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* --- 1. CONFIGURATION (Variables) --- */
 :root {
     --ut-bg: #000000;       
     --ut-text: #FFFFFF;     
@@ -12,25 +7,22 @@
     --ut-save: #FFFF00;     
     --ut-mercy: #00FF00;    
     --ut-orange: #ff8c00;    
-    /* Le VRAI coeur rouge pixelisé (Grille 8x7) */
+
     --ut-heart: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 7"><path fill="%23FF0000" d="M1,0h2v1H1zM5,0h2v1H5zM0,1h8v3H0zM1,4h6v1H1zM2,5h4v1H2zM3,6h2v1H3z"/></svg>');
     
-    /* Les coeurs du bouton Thème (Violet = Sombre, Jaune = Clair) */
     --ut-heart-purple: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 7"><path fill="%23A855F7" d="M1,0h2v1H1zM5,0h2v1H5zM0,1h8v3H0zM1,4h6v1H1zM2,5h4v1H2zM3,6h2v1H3z"/></svg>');
     --ut-heart-yellow: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 7"><path fill="%23FFFF00" d="M1,0h2v1H1zM5,0h2v1H5zM0,1h8v3H0zM1,4h6v1H1zM2,5h4v1H2zM3,6h2v1H3z"/></svg>');
     --ut-heart-orange: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 7"><path fill="%23ff8c00" d="M1,0h2v1H1zM5,0h2v1H5zM0,1h8v3H0zM1,4h6v1H1zM2,5h4v1H2zM3,6h2v1H3z"/></svg>');
 
-    /* La VRAIE étoile de sauvegarde (losange pixel parfait 9x9) */
     --ut-star: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><path fill="%23FFFF00" d="M4 0h1v1H4z M3 1h3v1H3z M2 2h5v1H2z M1 3h7v1H1z M0 4h9v1H0z M1 5h7v1H1z M2 6h5v1H2z M3 7h3v1H3z M4 8h1v1H4z"/></svg>');
     
-    /* LA POLICE DE TEXTE : Courier New (style machine à écrire / code) */
+
     --ut-font: 'Courier New', Courier, monospace; 
     
-    /* POLICE DE TITRE : Le vrai pixel art Undertale */
+
     --ut-font-title: 'Press Start 2P', monospace;
 }
 
-/* --- 2. RESET ET BASE --- */
 body {
     background-color: var(--ut-bg);
     color: var(--ut-text);
@@ -42,7 +34,6 @@ body {
     margin: 0;
 }
 
-/* On utilise la police classique 8-bit juste pour les titres */
 h1, h2, h3 {
     font-family: var(--ut-font-title);
     color: var(--ut-text);
@@ -56,7 +47,7 @@ h1 {
     font-size: 2.5rem;
 }
 
-/* --- LIENS CLASSIQUES --- */
+
 a {
     color: var(--ut-text);
     text-decoration: underline;
@@ -67,7 +58,6 @@ a:hover {
     color: var(--ut-soul); 
 }
 
-/* --- 3. BARRE DE NAVIGATION (Le Menu) --- */
 nav {
     background-color: var(--ut-bg); 
     border-bottom: 4px solid var(--ut-text); 
@@ -97,14 +87,12 @@ nav a {
     font-family: var(--ut-font-title); 
     font-size: 1rem;
     text-transform: uppercase;
-    /* On change la transition pour qu'elle soit instantanée au survol */
     transition: color 0s step-start; 
     position: relative;
     display: flex;
     align-items: center;
 }
 
-/* Le texte et le cœur s'allument en même temps ! */
 nav a:hover {
     color: var(--ut-soul); 
 }
@@ -113,13 +101,12 @@ nav a:hover::before {
     opacity: 1;
 }
 
-/* Adaptation pour le Thème Clair (Optionnel si tu veux l'orange aussi dans le menu) */
 body.light-theme nav a:hover {
-    color: var(--ut-save); /* Utilise ton orange simple */
+    color: var(--ut-save);
 }
 
 body.light-theme nav a:hover::before {
-    background-image: var(--ut-heart-orange); /* Ton nouveau cœur orange */
+    background-image: var(--ut-heart-orange);
 }
 
 nav a::before {
@@ -131,13 +118,10 @@ nav a::before {
     background-size: cover;
     margin-right: 10px; 
     image-rendering: pixelated; 
-    /* Invisible par défaut */
     opacity: 0; 
-    /* Transition calquée sur celle du texte */
     transition: opacity 0s step-start; 
 }
 
-/* --- 4. MISE EN PAGE GLOBALE (Pour aérer) --- */
 main {
     max-width: 900px; 
     margin: 0 auto; 
@@ -146,11 +130,9 @@ main {
 }
 
 section {
-    /* Augmente cette valeur pour espacer les catégories ! */
     margin-bottom: 200px; 
 }
 
-/* --- 5. BOÎTES DE COMBAT (Veille, Contact, Accueil) --- */
 .project-card {
     background-color: var(--ut-bg);   
     border: 5px solid var(--ut-text); 
@@ -162,7 +144,6 @@ section {
     border-radius: 0px;
 }
 
-/* Le Cœur Rouge Pixelisé (l'Âme) qui flotte dans la boîte */
 .project-card::after {
     content: ""; 
     position: absolute;
@@ -191,20 +172,18 @@ section {
     display: inline-block;
 }
 
-/* --- 6. PROJETS (Style Fichiers de Sauvegarde) --- */
 .save-file-card {
     background-color: var(--ut-bg);   
     border: 5px solid var(--ut-text); 
     padding: 30px 40px;  
     margin-bottom: 50px; 
-    font-family: var(--ut-font); /* Courier New pour la description */
+    font-family: var(--ut-font);
     border-radius: 0px;
     max-width: 650px; 
     margin-left: auto;
     margin-right: auto;
 }
 
-/* L'en-tête de la sauvegarde (Nom   LV   Temps) */
 .save-header {
     display: flex;
     justify-content: space-between;
@@ -228,7 +207,6 @@ section {
     line-height: 1.6;
 }
 
-/* Les boutons en bas (Style LOAD / RETURN) */
 .save-actions {
     display: flex;
     justify-content: space-around; 
@@ -239,7 +217,6 @@ section {
     padding: 10px 30px;
 }
 
-/* --- 7. BOUTONS (Style FIGHT / ACT / ITEM / MERCY) --- */
 button, .btn {
     display: inline-block; 
     text-decoration: none; 
@@ -260,7 +237,6 @@ button:hover, .btn:hover {
     border-color: var(--ut-text);
 }
 
-/* --- 8. COMPÉTENCES (Style Barres HP Undertale) --- */
 .skill-item {
     margin-bottom: 35px; 
     font-family: var(--ut-font-title); 
@@ -302,11 +278,9 @@ button:hover, .btn:hover {
     color: #888888; 
 }
 
-/* --- 9. APERÇU PDF (ÉPREUVE E5) --- */
 .pdf-preview-container {
     position: relative;
     width: 100%;
-    /* On agrandit un peu la hauteur pour avoir un bel aperçu du haut du document */
     height: 350px; 
     border: 3px dashed var(--ut-text); 
     margin-bottom: 25px;
@@ -316,7 +290,6 @@ button:hover, .btn:hover {
 
 .pdf-iframe {
     width: 100%;
-    /* Maintenant que la barre a disparu, on peut mettre la hauteur à 100% pile ! */
     height: 100%; 
     border: none;
     opacity: 0.8; 
@@ -333,7 +306,6 @@ button:hover, .btn:hover {
     pointer-events: none; 
 }
 
-/* --- 10. PARCOURS (Timeline des Sauvegardes) --- */
 .timeline {
     position: relative;
     max-width: 800px;
@@ -358,13 +330,12 @@ button:hover, .btn:hover {
     margin-bottom: 60px;
 }
 
-/* L'ÉTOILE PIXELISÉE EN SVG (Corrigée) */
 .timeline-star {
     position: absolute;
-    left: -42px; /* Centrage sur la ligne */
+    left: -42px;
     top: -4px;   
     
-    width: 27px;  /* 9x3 = 27 (Garde les pixels parfaitement carrés) */
+    width: 27px;
     height: 27px;
     
     background-image: var(--ut-star);
@@ -372,7 +343,6 @@ button:hover, .btn:hover {
     background-size: contain; 
     background-position: center;
     
-    /* Le secret pour des pixels ultra nets : */
     image-rendering: pixelated; 
     
     filter: drop-shadow(0 0 8px rgba(255, 255, 0, 0.8));
@@ -385,7 +355,6 @@ button:hover, .btn:hover {
     50% { transform: scale(1.15); filter: drop-shadow(0 0 10px rgba(255, 255, 0, 1)); }
 }
 
-/* --- L'EASTER EGG DU COEUR SUR LE PARCOURS UNDERTALE --- */
 .timeline-title {
     font-family: var(--ut-font-title);
     color: var(--ut-text);
@@ -435,7 +404,6 @@ button:hover, .btn:hover {
     margin-top: 0; margin-bottom: 5px;
 }
 
-/* --- 11. FILTRES DE PROJETS --- */
 .filtres-container {
     display: flex;
     justify-content: center;
@@ -448,7 +416,7 @@ button:hover, .btn:hover {
     background-color: var(--ut-bg);
     color: var(--ut-text);
     border: 2px solid var(--ut-text);
-    font-family: var(--ut-font-title); /* Police 8-bits */
+    font-family: var(--ut-font-title);
     font-size: 0.8rem;
     padding: 10px 20px;
     cursor: pointer;
@@ -457,17 +425,15 @@ button:hover, .btn:hover {
 }
 
 .btn-filtre:hover {
-    color: var(--ut-save); /* Jaune au survol */
+    color: var(--ut-save);
     border-color: var(--ut-save);
 }
 
-/* Le style quand le filtre est activé (Couleur de l'Âme / Rouge) */
 .btn-filtre.actif {
     color: var(--ut-soul);
     border-color: var(--ut-soul);
 }
 
-/* Le petit coeur apparaît devant le filtre actif */
 .btn-filtre.actif::before {
     content: "";
     display: inline-block;
@@ -479,23 +445,17 @@ button:hover, .btn:hover {
     image-rendering: pixelated;
 }
 
-/* =========================================
-   12. THEME CLAIR (LA SURFACE)
-   ========================================= */
-
 body.light-theme {
-    --ut-bg: #f9f9f7;       /* Blanc cassé reposant */
-    --ut-text: #2c2c2c;     /* Noir doux */
-    --ut-save: #ff8c00;     /* Orange simple */
+    --ut-bg: #f9f9f7;
+    --ut-text: #2c2c2c;
+    --ut-save: #ff8c00;
 }
 
-/* Entête légèrement plus grisée que le fond */
 body.light-theme nav {
     background-color: #ededeb; 
     border-bottom: 4px solid #d1d1cf;
 }
 
-/* Transitions pour les cartes et boutons pour éviter un flash brutal */
 body.light-theme .save-file-card,
 body.light-theme .project-card,
 body.light-theme .btn,
@@ -517,7 +477,6 @@ body.light-theme .hp-bar-container {
     transition: background-color 0.5s ease;
 }
 
-/* --- BOUTON THÈME (Correction Finale) --- */
 .btn-theme {
     background-color: transparent !important;
     border: none !important;
@@ -531,11 +490,9 @@ body.light-theme .hp-bar-container {
     background-repeat: no-repeat;
     image-rendering: pixelated; 
     cursor: pointer;
-    /* Transition douce pour le changement d'icône et la rotation */
     transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
-/* Changement vers le cœur orange en thème clair */
 body.light-theme .btn-theme {
     background-image: var(--ut-heart-orange) !important;
 }
@@ -555,19 +512,15 @@ body.light-theme .btn-theme {
     background-color: transparent;
 }
 
-/* La classe qui déclenche l'attaque ! */
 #encounter-overlay.active {
-    pointer-events: all; /* Bloque l'écran pendant l'animation */
+    pointer-events: all;
     animation: flashScreen 1.2s steps(1) forwards;
 }
 
-/* Le coeur rouge géant */
 .encounter-heart {
     position: absolute;
-    /* POSITION DE DÉPART : En haut à droite */
     top: 10%;
     left: 90%;
-    /* On le centre sur son propre point d'ancrage */
     transform: translate(-50%, -50%);
     
     width: 64px;
@@ -575,19 +528,19 @@ body.light-theme .btn-theme {
     background-image: var(--ut-heart);
     background-size: cover;
     image-rendering: pixelated;
-    opacity: 0; /* Caché par défaut */
-    z-index: 2; /* Pour être sûr qu'il est au-dessus du fond noir */
+    opacity: 0;
+    z-index: 2; 
 }
 
-/* Quand ça s'active : Le coeur clignote ET bouge en même temps */
+
 #encounter-overlay.active .encounter-heart {
-    /* On applique les DEUX animations simultanément, séparées par une virgule */
+    
     animation: 
-        flashHeart 1.2s steps(1) forwards,      /* Animation 1 : Le clignotement sec */
-        moveHeartToCenter 1.2s linear forwards; /* Animation 2 : Le mouvement fluide */
+        flashHeart 1.2s steps(1) forwards, 
+        moveHeartToCenter 1.2s linear forwards;
 }
 
-/* --- LES ANIMATIONS BRUTALES 8-BITS --- */
+
 @keyframes flashScreen {
     0%   { background-color: transparent; }
     10%  { background-color: #000000; }
@@ -596,8 +549,8 @@ body.light-theme .btn-theme {
     40%  { background-color: transparent; }
     50%  { background-color: #000000; }
     60%  { background-color: transparent; }
-    70%  { background-color: #FFFFFF; } /* Flash blanc intense ! */
-    80%  { background-color: #000000; } /* Fin sur écran noir */
+    70%  { background-color: #FFFFFF; }
+    80%  { background-color: #000000; }
     100% { background-color: #000000; }
 }
 
@@ -609,32 +562,25 @@ body.light-theme .btn-theme {
     40%  { opacity: 1; }
     50%  { opacity: 0; }
     60%  { opacity: 1; }
-    70%  { opacity: 0; } /* Disparaît pendant le flash blanc */
+    70%  { opacity: 0; }
     100% { opacity: 0; }
 }
 
-/* NOUVELLE ANIMATION : Le déplacement du coeur vers le centre */
 @keyframes moveHeartToCenter {
     0% {
-        /* Départ : Haut Droite */
         top: 10%;
         left: 90%;
     }
     60% {
-        /* Arrivée au centre (juste avant le gros flash blanc de 70%) */
         top: 50%;
         left: 50%;
     }
     100% {
-        /* Il reste au centre jusqu'à la fin */
         top: 50%;
         left: 50%;
     }
 }
 
-/* =========================================
-   14. STYLE DU FICHIER README (Markdown)
-   ========================================= */
 
 .markdown-body h1, 
 .markdown-body h2, 
