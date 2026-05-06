@@ -581,7 +581,6 @@ body.light-theme .btn-theme {
     }
 }
 
-
 .markdown-body h1, 
 .markdown-body h2, 
 .markdown-body h3 {
@@ -599,25 +598,148 @@ body.light-theme .btn-theme {
     font-family: var(--ut-font);
     color: #cccccc;
     line-height: 1.8;
+    margin-bottom: 20px;
 }
 
-.markdown-body img {
-    max-width: 100%;
-    border: 3px solid var(--ut-text);
+.markdown-body blockquote {
+    border: 2px solid var(--ut-save);
+    padding: 15px;
+    background-color: rgba(255, 255, 0, 0.05);
+    color: var(--ut-save);
+    font-family: var(--ut-font-title);
+    font-size: 0.9rem;
+    text-align: center;
     margin: 20px 0;
 }
 
-.markdown-body pre {
-    background-color: #111111;
-    border: 1px dashed var(--ut-save);
-    padding: 15px;
-    overflow-x: auto;
-    color: var(--ut-mercy); /* Le code s'affiche en vert façon console Matrix/Retro ! */
+body.light-theme .markdown-body p,
+body.light-theme .markdown-body li {
+    color: #4a4a4a;
 }
 
-.markdown-body code {
-    font-family: 'Courier New', monospace;
-    background-color: #222;
-    padding: 2px 6px;
+body.light-theme .markdown-body blockquote {
+    background-color: #f0f0e0;
+    border-color: var(--ut-save);
+}
+
+nav a.active::before,
+nav a:hover::before {
+    opacity: 1 !important;
+}
+
+nav:hover a.active:not(:hover)::before {
+    opacity: 0 !important;
+}
+
+nav a.active {
+    color: var(--ut-soul);
+}
+
+nav:hover a.active:not(:hover)::before {
+    opacity: 0 !important;
+}
+
+nav a:hover::before,
+nav a.active::before {
+    opacity: 1 !important;
+}
+
+body.light-theme nav a.active {
     color: var(--ut-save);
+}
+
+body.light-theme nav a.active::before {
+    background-image: var(--ut-heart-orange) !important;
+}
+
+nav a.active::before {
+    opacity: 1 !important;
+}
+
+nav a.active {
+    color: var(--ut-soul); 
+}
+
+body.light-theme nav a.active {
+    color: var(--ut-save);
+}
+
+
+@media (max-width: 768px) {
+    
+    body {
+        font-size: 18px; 
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    nav {
+        padding: 10px;
+    }
+
+    nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 0.75rem;
+    }
+
+    main {
+        margin-top: 140px;
+        padding: 0 15px 40px 15px;
+    }
+
+    section {
+        margin-bottom: 80px;
+    }
+
+    .project-card, .save-file-card {
+        padding: 20px 15px; 
+        border-width: 3px;
+    }
+
+    .save-header {
+        flex-direction: column; 
+        gap: 5px;
+        align-items: flex-start;
+    }
+
+    .save-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .save-actions .btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .timeline {
+        padding-left: 30px; 
+    }
+
+    .timeline::before {
+        left: 11px; 
+    }
+
+    .timeline-star {
+        left: -23px; 
+        width: 21px;
+        height: 21px;
+    }
+
+    #bts-sio > div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
 }

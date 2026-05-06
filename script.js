@@ -38,9 +38,25 @@ const mesProjets = [
         description: "Application mobile avec .NET.",
         technos: ["C#"],
         lien: "https://github.com/Kay0ni/CoachApp",
-        lienReadme: "https://raw.githubusercontent.com/Kay0ni/CoachApp/master/README.md",
+        lienReadme: "https://raw.githubusercontent.com/Kay0ni/CoachApp/refs/heads/master/README.md",
         texteLien: "FIGHT (Voir le code)",
         dateCreation: "23/01/2026"
+    },
+    {
+        titre: "Compte Bancaire",
+        description: "Application de gestion bancaire en Console C#.",
+        technos: ["C#"],
+        lien: "",
+        texteLien: "FIGHT (Voir le code)",
+        dateCreation: "16/01/2025"
+    },
+    {
+        titre: "Puissance 4",
+        description: "Jeu de puissance 4 en Console C#.",
+        technos: ["C#"],
+        lien: "",
+        texteLien: "FIGHT (Voir le code)",
+        dateCreation: "6/12/2024"
     },
     {
         titre: "Carte Interactive",
@@ -323,5 +339,47 @@ document.addEventListener('click', function(e) {
                 window.location.href = href; 
             }, 1200);
         }
+    }
+});
+
+// --- Gestion du Cœur Actif (Version Corrigée) ---
+
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav a');
+
+const observerOptions = {
+    root: null,
+    // Zone de détection plus large (40% au milieu de l'écran)
+    rootMargin: "-20% 0px -40% 0px", 
+    threshold: 0.1 
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        // On ne change le lien que si la section entre vraiment dans la zone
+        if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+            
+            if (activeLink) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                activeLink.classList.add('active');
+            }
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+
+// Correction pour le bas de page (uniquement si on touche vraiment le fond)
+window.addEventListener('scroll', () => {
+    const isAtBottom = (window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 50;
+    
+    if (isAtBottom) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const contactLink = document.querySelector('nav a[href="#contact"]');
+        if (contactLink) contactLink.classList.add('active');
     }
 });
