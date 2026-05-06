@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille | L'Ascension de Godot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">RETURN (Retourner au Hub)</a></li>
+        </ul>
+    </nav>
+
+    <main style="max-width: 1100px;">
+        <section class="section" style="margin-top: 50px;">
+            <h2>* VEILLE : LA RÉVOLUTION GODOT ENGINE</h2>
+            
+            <div class="project-card">
+                <div style="margin-bottom: 25px; border-bottom: 2px dashed var(--ut-text); padding-bottom: 10px;">
+                    <span style="font-family: var(--ut-font-title); color: var(--ut-save); font-size: 1.1rem;">SUJET : POURQUOI GODOT EST LE FUTUR DU DÉVELOPPEMENT</span>
+                </div>
+
+                <!-- 1. L'ÉVOLUTION VISUELLE -->
+                <h3>* 1. L'Évolution : Du Pixel au Photo-réalisme</h3>
+                <p>Godot a connu une transformation radicale avec sa version 4.0. Le passage au moteur de rendu <strong>Vulkan</strong> permet aujourd'hui de rivaliser avec les grands noms de l'industrie tout en restant extrêmement léger.</p>
+                
+                <div class="image-container" style="text-align: center; margin: 30px 0;">
+                    <img src="assets/godot-evolution.jpg" alt="Evolution Godot 3 vs 4" style="max-width: 500px; border: 3px solid var(--ut-save);">
+                    <p style="font-size: 0.8rem; font-style: italic; color: var(--ut-save);">* L'évolution du moteur de rendu : de l'OpenGL simple à la puissance de Vulkan.</p>
+                </div>
+
+                <ul>
+                    <li><strong>Versions 3.x :</strong> Excellentes pour la 2D et le mobile, mais limitées pour les projets 3D ambitieux.</li>
+                    <li><strong>Versions 4.x :</strong> Introduction du rendu "Forward+" et de technologies d'éclairage global en temps réel.</li>
+                </ul>
+
+                <hr style="border: 1px dashed var(--ut-text); margin: 30px 0;">
+
+                <!-- 2. LA LOGIQUE DES NOEUDS -->
+                <h3>* 2. Une Architecture Unique : Scènes et Nœuds</h3>
+                <p>La force de Godot réside dans son organisation : tout est une scène. Cette approche modulaire facilite énormément le travail en équipe et la réutilisation du code.</p>
+
+                <div class="image-container" style="text-align: center; margin: 30px 0;">
+                    <img src="assets/godot-nodes.webp" alt="Système de Noeuds Godot" style="max-width: 450px; border: 3px solid var(--ut-text);">
+                    <p style="font-size: 0.8rem; font-style: italic;">* L'arborescence de nœuds : une logique propre et hiérarchisée.</p>
+                </div>
+
+                <p><strong>Pourquoi c'est mieux ?</strong> Contrairement à Unity où les composants sont attachés à des objets, ici vous imbriquez des scènes les unes dans les autres, créant une structure parfaitement propre.</p>
+
+                <hr style="border: 1px dashed var(--ut-text); margin: 30px 0;">
+
+                <!-- 3. AVANTAGE SLAM : LE C# -->
+                <h3>* 3. L'atout .NET : La puissance du C#</h3>
+                <p>Pour un développeur SLAM, Godot est le choix logique car il supporte nativement **.NET 8/9**. Vous pouvez utiliser toutes vos connaissances en C# acquises sur vos autres projets.</p>
+
+                <div class="image-container" style="text-align: center; margin: 30px 0;">
+                    <img src="assets/godot-csharp.png" alt="Code C# dans Godot" style="max-width: 500px; border: 3px solid var(--ut-mercy);">
+                    <p style="font-size: 0.8rem; font-style: italic; color: var(--ut-mercy);">* Intégration parfaite du C# avec Visual Studio 2022.</p>
+                </div>
+
+                <p><strong>Verdict Economique :</strong>
+                   * Unity/Unreal : Taxes et redevances complexes.
+                   * <strong>Godot : 0% de frais, Open Source et totalement gratuit</strong>.</p>
+
+                <br>
+                <div style="text-align: center;">
+                    <a href="index.html" class="btn">RETURN (Quitter la Veille)</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const modal = document.createElement('div');
+        modal.classList.add('modal-zoom');
+        document.body.appendChild(modal);
+
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.innerHTML = `<img src="${img.src}" alt="Zoom">`;
+                modal.classList.add('active');
+            });
+        });
+
+        modal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

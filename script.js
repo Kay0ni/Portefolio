@@ -46,7 +46,8 @@ const mesProjets = [
         titre: "Compte Bancaire",
         description: "Application de gestion bancaire en Console C#.",
         technos: ["C#"],
-        lien: "",
+        lien: "https://github.com/Kay0ni/CompteBancaire",
+        lienReadme: "https://raw.githubusercontent.com/Kay0ni/CompteBancaire/refs/heads/master/README.md",
         texteLien: "FIGHT (Voir le code)",
         dateCreation: "16/01/2025"
     },
@@ -342,21 +343,17 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// --- Gestion du Cœur Actif (Version Corrigée) ---
-
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('nav a');
 
 const observerOptions = {
     root: null,
-    // Zone de détection plus large (40% au milieu de l'écran)
     rootMargin: "-20% 0px -40% 0px", 
     threshold: 0.1 
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        // On ne change le lien que si la section entre vraiment dans la zone
         if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
             const activeLink = document.querySelector(`nav a[href="#${id}"]`);
@@ -373,7 +370,6 @@ sections.forEach(section => {
     observer.observe(section);
 });
 
-// Correction pour le bas de page (uniquement si on touche vraiment le fond)
 window.addEventListener('scroll', () => {
     const isAtBottom = (window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 50;
     

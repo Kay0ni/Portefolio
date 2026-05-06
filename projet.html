@@ -37,21 +37,35 @@
             document.getElementById('projet-titre').innerText = "* Fichier : " + titre;
         }
 
+        const modal = document.createElement('div');
+        modal.classList.add('modal-zoom');
+        document.body.appendChild(modal);
+
         if (readmeUrl) {
-            fetch(readmeUrl, { mode : 'cors' })
+            fetch(readmeUrl)
                 .then(response => {
                     if (!response.ok) throw new Error("Fichier introuvable");
                     return response.text();
                 })
                 .then(text => {
                     document.getElementById('readme-content').innerHTML = marked.parse(text);
+                    
+                    const contentArea = document.getElementById('readme-content');
+                    contentArea.addEventListener('click', (e) => {
+                        if (e.target.tagName === 'IMG') {
+                            modal.innerHTML = `<img src="${e.target.src}" alt="Zoom">`;
+                            modal.classList.add('active');
+                        }
+                    });
                 })
                 .catch(error => {
-                    document.getElementById('readme-content').innerHTML = "* L'archive est corrompue ou introuvable. (Erreur 404)";
+                    document.getElementById('readme-content').innerHTML = "* Erreur : Impossible de charger la sauvegarde.";
                 });
-        } else {
-            document.getElementById('readme-content').innerHTML = "* Aucun fichier de sauvegarde trouvé.";
         }
+        
+        modal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
     </script>
 </body>
 </html>

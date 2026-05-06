@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille | Cybersécurité</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">RETURN (Retourner au Hub)</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="section" style="margin-top: 50px;">
+            <h2>* VEILLE : CYBERSÉCURITÉ</h2>
+            
+            <div class="project-card">
+                <h3>* Sujet de la veille</h3>
+                <p>Écris ici le sujet précis de ta veille (ex: Les Deepfakes dans le phishing).</p>
+
+                <hr style="border: 1px dashed var(--ut-text); margin: 20px 0;">
+
+                <h3>* Sources & Outils</h3>
+                <ul>
+                    <li>Flux RSS : [Lien ou nom du site]</li>
+                    <li>Outil : Google Alerts / Feedly</li>
+                </ul>
+
+                <hr style="border: 1px dashed var(--ut-text); margin: 20px 0;">
+
+                <h3>* Synthèse des recherches</h3>
+                <p>
+                    C'est ici que tu rédiges ton analyse. Tu peux utiliser des balises <strong><strong></strong> pour mettre en avant des mots clés.
+                </p>
+                
+                <div class="image-container">
+                    <img src="assets/ton-image-veille.png" alt="Graphique de veille" style="max-width: 300px;">
+                    <p style="font-size: 0.8rem; font-style: italic;">* Clique sur l'image pour l'agrandir.</p>
+                </div>
+
+                <br>
+                <a href="index.html" class="btn">RETURN (Quitter)</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const modal = document.createElement('div');
+        modal.classList.add('modal-zoom');
+        document.body.appendChild(modal);
+
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.innerHTML = `<img src="${img.src}" alt="Zoom">`;
+                modal.classList.add('active');
+            });
+        });
+
+        modal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

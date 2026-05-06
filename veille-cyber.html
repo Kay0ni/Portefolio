@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille | Cybersécurité & IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">RETURN (Retourner au Hub)</a></li>
+        </ul>
+    </nav>
+
+    <main style="max-width: 1100px;"> <!-- Légèrement plus large pour le contenu dense -->
+        <section class="section" style="margin-top: 50px;">
+            <h2>* VEILLE : CYBERSÉCURITÉ [2024 - 2026]</h2>
+            
+            <div class="project-card">
+                <div style="margin-bottom: 25px; border-bottom: 2px dashed var(--ut-text); padding-bottom: 10px;">
+                    <span style="font-family: var(--ut-font-title); color: var(--ut-save); font-size: 1.1rem;">THÈME : L'IA DANS L'INGÉNIERIE SOCIALE</span>
+                </div>
+
+                <!-- 1. MÉTHODOLOGIE DE VEILLE -->
+                <h3>* 1. Méthodologie de Capture (Outils)</h3>
+                <p>Pour cette veille, j'ai mis en place une pipeline de récupération automatisé afin de ne manquer aucune menace critique.</p>
+                <ul>
+                    <li><strong>Agrégateurs Flux RSS :</strong> Utilisation de <strong>Feedly</strong> pour centraliser les articles de l'ANSSI, du site Cybermalveillance.gouv.fr et de Zataz.</li>
+                    <li><strong>Alertes Automatisées :</strong> Configuration de <strong>Google Alerts</strong> sur les mots-clés : <em>"Deepfake Phishing"</em>, <em>"AI Social Engineering"</em>, et <em>"Vishing 2026"</em>.</li>
+                    <li><strong>Sources Spécialisées :</strong> Suivi quotidien des bulletins de sécurité de l'<strong>ANSSI</strong> et des rapports de menaces de Proofpoint.</li>
+                </ul>
+
+                <hr style="border: 1px dashed var(--ut-text); margin: 30px 0;">
+
+                <!-- 2. PROBLÉMATIQUE -->
+                <h3>* 2. Problématique</h3>
+                <p>Comment l'intelligence artificielle générative transforme-t-elle les attaques par ingénierie sociale (Phishing, Vishing) en menaces indétectables pour les systèmes de défense classiques ?</p>
+
+                <hr style="border: 1px dashed var(--ut-text); margin: 30px 0;">
+
+                <!-- 3. SYNTHÈSE TECHNIQUE -->
+                <h3>* 3. Synthèse des Recherches (EXP)</h3>
+                
+                <p><strong>A. Le Phishing assisté par LLM :</strong> Les modèles de langage (type ChatGPT détourné) permettent aujourd'hui aux attaquants de générer des emails de phishing parfaitement rédigés, sans aucune faute d'orthographe ou de syntaxe, rendant les indices visuels habituels inutilisables.</p>
+
+                <p><strong>B. Le Vishing et les Deepfakes Vocaux :</strong> En 2025, les attaques par "Vishing" (Phishing vocal) ont explosé. Des outils d'IA permettent de cloner la voix d'un dirigeant à partir d'un échantillon de seulement 3 secondes. Cela permet de réaliser des "Fraudes au Président" ultra-réalistes par téléphone.</p>
+
+                <p><strong>C. Le Spear-Phishing Dynamique :</strong> L'IA peut analyser automatiquement les profils LinkedIn d'une cible pour créer un "prétexte" sur-mesure (mentionnant un collègue réel ou un projet récent), augmentant le taux de réussite des attaques de 40%.</p>
+
+                <hr style="border: 1px dashed var(--ut-text); margin: 30px 0;">
+
+                <!-- 4. CHRONOLOGIE DES FAITS -->
+                <h3>* 4. Journal de Bord (Timeline)</h3>
+                <div class="timeline-desc">
+                    <p><strong>[Décembre 2025] :</strong> Découverte d'une campagne massive utilisant des avatars vidéo générés par IA lors de réunions Teams pour valider des virements frauduleux.</p>
+                    <p><strong>[Janvier 2026] :</strong> Sortie du rapport de l'ANSSI sur la nécessité de l'authentification multi-facteurs (MFA) résistante au phishing (FIDO2).</p>
+                    <p><strong>[Mars 2026] :</strong> Généralisation des outils de détection de "Deepfake" basés sur l'analyse de la fréquence vocale pour les entreprises.</p>
+                </div>
+
+                <hr style="border: 1px dashed var(--ut-text); margin: 30px 0;">
+
+                <!-- 5. ANALYSE & CONCLUSION -->
+                <h3>* 5. Analyse Personnelle</h3>
+                <p>En tant qu'étudiant en <strong>SLAM</strong>, je constate que la sécurité ne peut plus reposer uniquement sur l'humain. Le code doit intégrer des protocoles de vérification plus stricts (Zero Trust). La veille technologique montre que pour chaque bouclier créé, l'IA permet de forger une épée plus tranchante.</p>
+
+                <blockquote style="border: 2px solid var(--ut-save); padding: 15px; color: var(--ut-save); font-family: var(--ut-font-title); font-size: 0.8rem; margin: 25px 0;">
+                    * RECOMMANDATION : Implémenter des clés de sécurité physiques et sensibiliser à la vérification hors-canal.
+                </blockquote>
+
+                <br>
+                <div style="text-align: center;">
+                    <a href="index.html" class="btn">RETURN (Sauvegarder et Quitter)</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Système de Zoom intégré -->
+    <script>
+        const modal = document.createElement('div');
+        modal.classList.add('modal-zoom');
+        document.body.appendChild(modal);
+
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.innerHTML = `<img src="${img.src}" alt="Zoom">`;
+                modal.classList.add('active');
+            });
+        });
+
+        modal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
