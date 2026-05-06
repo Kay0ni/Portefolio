@@ -540,6 +540,48 @@ body.light-theme .btn-theme {
         moveHeartToCenter 1.2s linear forwards;
 }
 
+/* --- 14. STYLE DU FICHIER README (IMAGE FIX) --- */
+
+.markdown-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border: 3px solid var(--ut-text);
+    image-rendering: pixelated; 
+}
+
+/* On cible spécifiquement les images de ton application Coach App dans le tableau */
+.markdown-body table img {
+    width: 100%;          /* L'image prend toute la largeur disponible de la colonne */
+    max-width: 220px;     /* On limite la largeur pour garder un aspect "téléphone" */
+    max-height: 500px;    /* On augmente la hauteur autorisée[cite: 1] */
+    height: auto;         /* Garde les proportions[cite: 1] */
+    margin: 15px auto;
+}
+
+/* Force les 3 colonnes à avoir exactement la même taille */
+.markdown-body table {
+    width: 100%;
+    table-layout: fixed;  /* Force des colonnes égales[cite: 1] */
+    border-collapse: collapse;
+    margin: 30px 0;
+}
+
+.markdown-body td {
+    width: 33.33%;        /* 1/3 de l'espace par colonne[cite: 1] */
+    vertical-align: top;
+    padding: 15px 5px;
+    border: 1px solid #333;
+}
+
+/* Ajustement du texte dans le tableau pour qu'il ne se chevauche pas */
+.markdown-body td p, 
+.markdown-body td em {
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 10px;
+}
 
 @keyframes flashScreen {
     0%   { background-color: transparent; }
